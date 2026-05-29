@@ -1,5 +1,5 @@
 resource_group_name = "AVD-Lab"
-location            = "Southeast Asia"
+location            = "centralindia"
 
 tags = {
   Environment = "Lab"
