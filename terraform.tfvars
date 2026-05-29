@@ -11,23 +11,17 @@ vnet_name          = "Vnet01"
 vnet_address_space = ["10.0.0.0/16"]
 
 subnets = {
-  dc  = { address_prefixes = ["10.0.1.0/24"] }
   avd = { address_prefixes = ["10.0.2.0/24"] }
 }
 
-nsg_name        = "nsg-avd-lab"
+nsg_name       = "nsg-avd-lab"
+admin_source_ip = "49.206.129.31"   # Replace with your actual public IP: curl ifconfig.me
 
-
-
-
-
-dc_vm_name             = "dc01"
-dc_vm_size             = "Standard_B2s"
-dc_admin_username      = "labadmin"
-dc_private_ip          = "10.0.1.4"
-domain_name            = "lab.local"
+admin_username         = "labadmin"
 auto_shutdown_time     = "2300"
 auto_shutdown_timezone = "India Standard Time"
 
+sh_vm_name = "sh01"
+sh_vm_size = "Standard_B2s"
 
-fslogix_storage_account_name = "stfslogixshabeer042"  
+fslogix_storage_account_name = "stfslogixshabeer042"

@@ -37,23 +37,6 @@ variable "admin_password" {
   sensitive = true
 }
 
-variable "domain_name" {
-  description = "AD domain to join"
-  type        = string
-  default     = "lab.local"
-}
-
-variable "domain_admin_user" {
-  description = "Domain admin UPN used for the domain join (e.g. labadmin@lab.local)"
-  type        = string
-}
-
-variable "domain_admin_password" {
-  description = "Password for domain_admin_user"
-  type        = string
-  sensitive   = true
-}
-
 variable "host_pool_name" {
   description = "Target AVD host pool name"
   type        = string

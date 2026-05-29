@@ -1,5 +1,3 @@
-
-
 resource "azurerm_network_interface" "sh" {
   name                = "nic-${var.vm_name}"
   location            = var.location
@@ -43,34 +41,7 @@ resource "azurerm_windows_virtual_machine" "sh" {
 }
 
 # -----------------------------------------------------------------------------
-# Domain Join via JsonADDomainExtension
-# -----------------------------------------------------------------------------
-resource "azurerm_virtual_machine_extension" "domain_join" {
-  name                       = "domain-join"
-  virtual_machine_id         = azurerm_windows_virtual_machine.sh.id
-  publisher                  = "Microsoft.Compute"
-  type                       = "JsonADDomainExtension"
-  type_handler_version       = "1.3"
-  auto_upgrade_minor_version = true
-
-  settings = jsonencode({
-    Name    = var.domain_name
-    User    = var.domain_admin_user
-    Restart = "true"
-    Options = "3"  # JOIN_DOMAIN + ACCT_CREATE
-  })
-
-  protected_settings = jsonencode({
-    Password = var.domain_admin_password
-  })
-
-  timeouts {
-    create = "30m"
-  }
-}
-
-# -----------------------------------------------------------------------------
-# AVD Agent install + host pool registration via DSC
+# AVD Agent install + host pool registration via DSC (Entra ID joined)
 # -----------------------------------------------------------------------------
 resource "azurerm_virtual_machine_extension" "avd_dsc" {
   name                       = "AddSessionHost"
@@ -84,8 +55,8 @@ resource "azurerm_virtual_machine_extension" "avd_dsc" {
     modulesUrl            = var.avd_dsc_config_url
     configurationFunction = "Configuration.ps1\\AddSessionHost"
     properties = {
-      hostPoolName          = var.host_pool_name
-      aadJoin               = false
+      hostPoolName = var.host_pool_name
+      aadJoin      = true
     }
   })
 
@@ -98,8 +69,6 @@ resource "azurerm_virtual_machine_extension" "avd_dsc" {
   timeouts {
     create = "60m"
   }
-
-  depends_on = [azurerm_virtual_machine_extension.domain_join]
 }
 
 # -----------------------------------------------------------------------------

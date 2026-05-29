@@ -1,0 +1,10 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rm -rf \"/Users/fathima/Terraform_Modules copy/AVD-FSLogix-Without-Domain-Controllers/modules/dc\")"
+    ],
+    "additionalDirectories": [
+      "/Users/fathima/Terraform_Modules copy/AVD-FSLogix-Without-Domain-Controllers/modules/dc"
+    ]
+  }
+}
