@@ -75,14 +75,14 @@ module "fslogix_storage" {
   depends_on = [module.session_host]
 }
 
-# module "fslogix_automation" {
-#   source = "./modules/fslogix-automation"
+module "fslogix_automation" {
+  source = "./modules/fslogix-automation"
 
-#   resource_group_name  = var.resource_group_name
-#   location             = var.location
-#   session_host_vm_id   = module.session_host.vm_id
-#   session_host_vm_name = module.session_host.vm_name
-#   tags                 = var.tags
+  resource_group_name  = var.resource_group_name
+  location             = var.location
+  session_host_vm_id   = module.session_host.vm_id
+  session_host_vm_name = module.session_host.vm_name
+  tags                 = var.tags
 
-#   depends_on = [module.fslogix_storage]
-# }
+  depends_on = [module.fslogix_storage]
+}
