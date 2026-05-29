@@ -22,6 +22,6 @@ auto_shutdown_time     = "2300"
 auto_shutdown_timezone = "India Standard Time"
 
 sh_vm_name = "sh01"
-sh_vm_size = "Standard_D2as_v5"
+sh_vm_size = "Standard_D2s_v3"
 
 fslogix_storage_account_name = "stfslogixshabeer042"
