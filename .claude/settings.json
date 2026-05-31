@@ -1,10 +1,14 @@
 {
   "permissions": {
     "allow": [
-      "Bash(rm -rf \"/Users/fathima/Terraform_Modules copy/AVD-FSLogix-Without-Domain-Controllers/modules/dc\")"
+      "Bash(rm -rf \"/Users/fathima/Terraform_Modules copy/AVD-FSLogix-Without-Domain-Controllers/modules/dc\")",
+      "Bash(find \"/Users/fathima/Terraform_Modules copy/AVD-Fslogix-Hybrid-ADDC\" -name \"*.tf\" -o -name \"*.tfvars\" | sort)",
+      "Read(//Users/fathima/Terraform_Modules copy/AVD-Fslogix-Hybrid-ADDC/**)",
+      "Bash(terraform state *)"
     ],
     "additionalDirectories": [
-      "/Users/fathima/Terraform_Modules copy/AVD-FSLogix-Without-Domain-Controllers/modules/dc"
+      "/Users/fathima/Terraform_Modules copy/AVD-FSLogix-Without-Domain-Controllers/modules/dc",
+      "/Users/fathima/Terraform_Modules copy/AVD-Fslogix-Hybrid-ADDC"
     ]
   }
 }
